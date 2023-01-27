@@ -1,0 +1,20 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name = "Verify amazon.com" parallel="tests" thread-count="2">
+
+    <test name = "ChromeTest - GiftCard section test" parallel="methods" thread-count="1">
+        <parameter name="browser" value="chrome"/>
+        <classes>
+            <class name = "com.solvd.mobiletesting.GiftCardDeliveryTest" />
+        </classes>
+    </test>
+
+<!--    <test name = "FirefoxTest - GiftCard section test" parallel="methods" thread-count="1">-->
+<!--        <parameter name="browser" value="firefox"/>-->
+<!--        <classes>-->
+<!--            <class name = "com.solvd.mobiletestingGiftCardDeliveryTest" />-->
+<!--        </classes>-->
+<!--    </test>-->
+
+</suite>
