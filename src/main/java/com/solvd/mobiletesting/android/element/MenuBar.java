@@ -11,7 +11,7 @@ import org.openqa.selenium.support.FindBy;
 @DeviceType(pageType = DeviceType.Type.ANDROID_PHONE, parentClass = MenuBarBase.class)
 public class MenuBar extends MenuBarBase {
 
-    @FindBy(xpath = "//*[@id='nav-gwbar']//*[@href='/gp/browse.html?node=2238192011&ref_=navm_cs_giftcards']")
+    @FindBy(xpath = "//*[@id='nav-gwbar']//*[contains(@href,'giftcards')]")
     private ExtendedWebElement giftCardTabButton;
 
     public MenuBar(WebDriver driver) {

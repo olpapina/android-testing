@@ -30,7 +30,8 @@ public class GiftCardPage extends GiftCardPageBase {
 
     @Override
     public void clickOccasionButton() {
-        occasionButtons.get((int) (Math.random() * occasionButtons.size())).click(5L);
+        int buttonNumber = (int) (Math.random() * occasionButtons.size());
+        occasionButtons.get(buttonNumber).click(5L);
     }
 
     @Override

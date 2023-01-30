@@ -13,8 +13,8 @@ import java.util.List;
 @DeviceType(pageType = DeviceType.Type.ANDROID_PHONE, parentClass = TopDropMenuBase.class)
 public class TopDropMenu extends TopDropMenuBase implements IMobileUtils {
 
-    @FindBy(xpath = "//*[@href='/gp/browse.html?node=2238192011&ref_=navm_em__mw_cs_gc_0_1_1_22']")
-    private ExtendedWebElement giftCardButton;
+    @FindBy(xpath = "//*[contains(@href,'gp') and contains(text(),'Gift Cards')]")
+    private List<ExtendedWebElement> giftCardButtons;
 
     @FindBy(xpath = "//*[contains(@class,'hmenu-compressed-btn')]//*[contains(text(),'see all')]")
     private List<ExtendedWebElement> seeAllButtons;
@@ -26,7 +26,7 @@ public class TopDropMenu extends TopDropMenuBase implements IMobileUtils {
     @Override
     public GiftCardPageBase clickGiftCardButton() {
         seeAllButtons.get(0).clickIfPresent();
-        giftCardButton.clickIfPresent(5L);
+        giftCardButtons.get(0).clickIfPresent(5L);
         return initPage(getDriver(), GiftCardPageBase.class);
     }
 }

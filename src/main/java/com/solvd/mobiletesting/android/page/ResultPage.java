@@ -24,7 +24,8 @@ public class ResultPage extends ResultPageBase {
     public List<String> getValidationMessages() {
         return resultLinks.stream()
                 .map(resultLink -> {
-                    resultLinks.get((int) (Math.random() * resultLinks.size())).click();
+                    int linkNumber = (int) (Math.random() * resultLinks.size());
+                    resultLinks.get(linkNumber).click();
                     ProductPageBase productPage = new ProductPage(getDriver());
                     String message = productPage.getDeliveryValidationMessageText();
                     getDriver().navigate().back();
@@ -37,7 +38,8 @@ public class ResultPage extends ResultPageBase {
     public List<Boolean> checkButtonStatus(String type) {
         return resultLinks.stream()
                 .map(resultLink -> {
-                    resultLinks.get((int) (Math.random() * resultLinks.size())).click();
+                    int linkNumber = (int) (Math.random() * resultLinks.size());
+                    resultLinks.get(linkNumber).click();
                     ProductPageBase productPage = new ProductPage(getDriver());
                     Boolean status = productPage.isAddToCartButton(type);
                     getDriver().navigate().back();
@@ -50,7 +52,8 @@ public class ResultPage extends ResultPageBase {
     public List<String> getDeliveryStatuses() {
         return resultLinks.stream()
                 .map(resultLink -> {
-                    resultLinks.get((int) (Math.random() * resultLinks.size())).click();
+                    int linkNumber = (int) (Math.random() * resultLinks.size());
+                    resultLinks.get(linkNumber).click();
                     ProductPageBase productPage = new ProductPage(getDriver());
                     String statusesText = productPage.getDeliveryStatus();
                     getDriver().navigate().back();
@@ -62,7 +65,8 @@ public class ResultPage extends ResultPageBase {
     public List<String> getDeliveryTypes() {
         return resultLinks.stream()
                 .map(resultLink -> {
-                    resultLinks.get((int) (Math.random() * resultLinks.size())).click();
+                    int linkNumber = (int) (Math.random() * resultLinks.size());
+                    resultLinks.get(linkNumber).click();
                     ProductPageBase productPage = new ProductPage(getDriver());
                     String typesText = productPage.getDeliveryType();
                     getDriver().navigate().back();
