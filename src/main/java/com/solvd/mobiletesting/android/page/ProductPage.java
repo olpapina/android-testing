@@ -12,13 +12,13 @@ public class ProductPage extends ProductPageBase {
     @FindBy(xpath = "//*[@class='a-spacing-base']//*[@class='a-color-error']")
     private ExtendedWebElement deliveryValidationMessage;
 
-    @FindBy(xpath = "//*[@class='a-button-inner']//*[@id='gc-order-form-atc']")
+    @FindBy(xpath = "//*[@id='add-to-cart-button']")
     private ExtendedWebElement addToCartButton;
 
-    @FindBy(xpath = "//*[@class='a-button-inner']//*[@id='gc-order-form-bn']")
+    @FindBy(xpath = "//*[@id='buy-now-button']")
     private ExtendedWebElement buyNowButton;
 
-    @FindBy(xpath = "//*[@id='mir-layout-DELIVERY_BLOCK-slot-PRIMARY_DELIVERY_MESSAGE_LARGE']")
+    @FindBy(xpath = "//*[@id='exportsUndeliverableMobile-cart-announce']")
     private ExtendedWebElement inactiveAddToCartButton;
 
     @FindBy(xpath = "//*[@id='contextualIngressPt']")
@@ -32,13 +32,21 @@ public class ProductPage extends ProductPageBase {
     }
 
     @Override
-    public String getDeliveryValidationMessage() {
-        return deliveryValidationMessage.getText();
+    public String getDeliveryValidationMessageText() {
+        if (deliveryValidationMessage.isElementPresent()) {
+            return deliveryValidationMessage.getText();
+        } else {
+            return null;
+        }
     }
 
     @Override
-    public Boolean isAddToCartButtonInactive() {
-        return inactiveAddToCartButton.isElementPresent();
+    public Boolean isAddToCartButton(String type) {
+        if (type.equals("inactive")) {
+            return inactiveAddToCartButton.isElementPresent();
+        } else {
+            return addToCartButton.isElementPresent() & buyNowButton.isElementPresent();
+        }
     }
 
     @Override
@@ -51,5 +59,7 @@ public class ProductPage extends ProductPageBase {
         return deliveryType.getText();
     }
 
-
+    public ExtendedWebElement getDeliveryValidationMessage() {
+        return deliveryValidationMessage;
+    }
 }

@@ -2,6 +2,7 @@ package com.solvd.mobiletesting.android.page;
 
 import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
 import com.solvd.mobiletesting.base.page.EnterZipCodePageBase;
+import com.solvd.mobiletesting.base.page.HomePageBase;
 import com.zebrunner.carina.utils.R;
 import com.zebrunner.carina.utils.factory.DeviceType;
 import org.openqa.selenium.WebDriver;
@@ -22,13 +23,14 @@ public class EnterZipCodePage extends EnterZipCodePageBase {
 
     @Override
     public void enterZipCode() {
-        if (enterZipCodeField.isElementPresent()) {
+        if (enterZipCodeField.isElementPresent(5L)) {
             enterZipCodeField.type(R.TESTDATA.get("zipCode"));
         }
     }
 
     @Override
-    public void clickApplyButton() throws InterruptedException {
+    public HomePageBase clickApplyButton() {
         applyButton.click(5L);
+        return initPage(getDriver(), HomePageBase.class);
     }
 }

@@ -9,6 +9,7 @@ import com.solvd.mobiletesting.base.page.HomePageBase;
 import com.zebrunner.carina.utils.factory.DeviceType;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 @DeviceType(pageType = DeviceType.Type.ANDROID_PHONE, parentClass = HomePageBase.class)
 public class HomePage extends HomePageBase {
@@ -35,6 +36,7 @@ public class HomePage extends HomePageBase {
 
     @Override
     public String getActualDeliveryLocation() {
+        waitUntil(ExpectedConditions.visibilityOfAllElements(), 10L);
         String location = "";
         if (deliveryLocationIcon.isElementPresent(5L)) {
             location = deliveryLocationIcon.getText();
@@ -49,7 +51,7 @@ public class HomePage extends HomePageBase {
 
     @Override
     public TopDropMenuBase clickTopMenu() {
-        topMenuButton.click(2L);
+        topMenuButton.click(5L);
         return initPage(getDriver(), TopDropMenuBase.class);
     }
 }

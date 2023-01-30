@@ -17,6 +17,7 @@ public class SearchBox extends SearchBoxBase implements IMobileUtils {
 
     @FindBy(xpath = "//*[contains(@class,'nav-search-submit')]")
     private ExtendedWebElement searchButton;
+
     public SearchBox(WebDriver driver) {
         super(driver);
     }

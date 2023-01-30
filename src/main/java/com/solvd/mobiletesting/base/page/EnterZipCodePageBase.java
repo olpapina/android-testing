@@ -10,5 +10,5 @@ public abstract class EnterZipCodePageBase extends AbstractPage {
 
     public abstract void enterZipCode();
 
-    public abstract void clickApplyButton() throws InterruptedException;
+    public abstract HomePageBase clickApplyButton();
 }

@@ -9,9 +9,9 @@ public abstract class ProductPageBase extends AbstractPage {
         super(driver);
     }
 
-    public abstract String getDeliveryValidationMessage();
+    public abstract String getDeliveryValidationMessageText();
 
-    public abstract Boolean isAddToCartButtonInactive();
+    public abstract Boolean isAddToCartButton(String type);
 
     public abstract String getDeliveryStatus();
 

@@ -26,7 +26,7 @@ public class ResultPage extends ResultPageBase {
                 .map(resultLink -> {
                     resultLinks.get((int) (Math.random() * resultLinks.size())).click();
                     ProductPageBase productPage = new ProductPage(getDriver());
-                    String message = productPage.getDeliveryValidationMessage();
+                    String message = productPage.getDeliveryValidationMessageText();
                     getDriver().navigate().back();
                     return message;
                 })
@@ -34,29 +34,29 @@ public class ResultPage extends ResultPageBase {
     }
 
     @Override
-    public List<Boolean> checkButtonStatus() {
+    public List<Boolean> checkButtonStatus(String type) {
         return resultLinks.stream()
                 .map(resultLink -> {
                     resultLinks.get((int) (Math.random() * resultLinks.size())).click();
                     ProductPageBase productPage = new ProductPage(getDriver());
-                    Boolean status = productPage.isAddToCartButtonInactive();
+                    Boolean status = productPage.isAddToCartButton(type);
                     getDriver().navigate().back();
                     return status;
                 })
                 .collect(Collectors.toList());
     }
 
-   @Override
+    @Override
     public List<String> getDeliveryStatuses() {
-            return resultLinks.stream()
-                    .map(resultLink -> {
-                        resultLinks.get((int) (Math.random() * resultLinks.size())).click();
-                        ProductPageBase productPage = new ProductPage(getDriver());
-                        String statusesText = productPage.getDeliveryStatus();
-                        getDriver().navigate().back();
-                        return statusesText;
-                    })
-                    .collect(Collectors.toList());
+        return resultLinks.stream()
+                .map(resultLink -> {
+                    resultLinks.get((int) (Math.random() * resultLinks.size())).click();
+                    ProductPageBase productPage = new ProductPage(getDriver());
+                    String statusesText = productPage.getDeliveryStatus();
+                    getDriver().navigate().back();
+                    return statusesText;
+                })
+                .collect(Collectors.toList());
     }
 
     public List<String> getDeliveryTypes() {

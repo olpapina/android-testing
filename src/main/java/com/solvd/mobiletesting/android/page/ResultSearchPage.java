@@ -29,10 +29,8 @@ public class ResultSearchPage extends ResultSearchPageBase implements IMobileUti
 
     @Override
     public ResultPageBase clickFilterOfCard(String type) {
-        //filterButton.clickIfPresent();
         switch (type) {
             case "Mail":
-//                mailButton.scrollTo();
                 tap(mailButton);
                 break;
             case "eGIFT":
