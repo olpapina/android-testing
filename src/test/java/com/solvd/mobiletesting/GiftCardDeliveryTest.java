@@ -24,7 +24,7 @@ public class GiftCardDeliveryTest implements IAbstractTest {
         String actualLocation = homePage.getActualDeliveryLocation();
         Assert.assertEquals(actualLocation, R.TESTDATA.get("impossibleDelivery"), "The location is not " + R.TESTDATA.get("impossibleDelivery"));
         MenuBarBase menuBar = homePage.getMenuBar();
-        GiftCardPageBase giftCardPage = menuBar.clickGiftCardTabButton();
+        GiftCardPageBase giftCardPage = menuBar.clickGiftCardTabButtonIfPresent();
         giftCardPage.clickOccasionButton();
         ResultPageBase resultPage = giftCardPage.clickTypeOfCard("MAIL");
         List<String> messages = resultPage.getValidationMessages();
@@ -43,7 +43,7 @@ public class GiftCardDeliveryTest implements IAbstractTest {
         String actualLocation = homePage.getActualDeliveryLocation();
         Assert.assertEquals(actualLocation, R.TESTDATA.get("impossibleDelivery"), "The location is not " + R.TESTDATA.get("impossibleDelivery"));
         MenuBarBase menuBar = homePage.getMenuBar();
-        GiftCardPageBase giftCardPage = menuBar.clickGiftCardTabButton();
+        GiftCardPageBase giftCardPage = menuBar.clickGiftCardTabButtonIfPresent();
         giftCardPage.clickOccasionButton();
         ResultPageBase resultPage = giftCardPage.clickTypeOfCard("MAIL");
         List<Boolean> statuses = resultPage.checkButtonStatus("inactive");
@@ -86,7 +86,7 @@ public class GiftCardDeliveryTest implements IAbstractTest {
         String actualLocation = homePage.getActualDeliveryLocation();
         Assert.assertEquals(actualLocation, R.TESTDATA.get("impossibleDelivery"), "The location is not " + R.TESTDATA.get("impossibleDelivery"));
         MenuBarBase menuBar = homePage.getMenuBar();
-        GiftCardPageBase giftCardPage = menuBar.clickGiftCardTabButton();
+        GiftCardPageBase giftCardPage = menuBar.clickGiftCardTabButtonIfPresent();
         giftCardPage.clickOccasionButton();
         ResultPageBase resultPage = giftCardPage.clickTypeOfCard("EGIFT");
         List<String> types = resultPage.getDeliveryTypes();

@@ -9,5 +9,5 @@ public abstract class MenuBarBase extends AbstractPage {
         super(driver);
     }
 
-    public abstract GiftCardPageBase clickGiftCardTabButton();
+    public abstract GiftCardPageBase clickGiftCardTabButtonIfPresent();
 }

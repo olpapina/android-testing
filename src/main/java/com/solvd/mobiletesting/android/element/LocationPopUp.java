@@ -22,12 +22,12 @@ public class LocationPopUp extends LocationPopUpBase {
 
     @Override
     public SelectLocationPageBase clickChangeAddressButton() {
-        changeAddressButton.clickIfPresent(5L);
+        changeAddressButton.click(5L);
         return initPage(getDriver(), SelectLocationPageBase.class);
     }
 
     @Override
     public void clickNotChangeButton() {
-        notChangeButton.clickIfPresent(5L);
+        notChangeButton.click(5L);
     }
 }
