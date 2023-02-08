@@ -20,9 +20,7 @@ public class MenuBar extends MenuBarBase {
 
     @Override
     public GiftCardPageBase clickGiftCardTabButton() {
-        if (giftCardTabButton.isElementPresent(5)) {
-            giftCardTabButton.click();
-        }
+        giftCardTabButton.clickIfPresent(5L);
         return initPage(getDriver(), GiftCardPageBase.class);
     }
 }

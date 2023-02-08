@@ -5,8 +5,10 @@ import com.solvd.mobiletesting.base.page.EnterZipCodePageBase;
 import com.solvd.mobiletesting.base.page.HomePageBase;
 import com.zebrunner.carina.utils.R;
 import com.zebrunner.carina.utils.factory.DeviceType;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 @DeviceType(pageType = DeviceType.Type.ANDROID_PHONE, parentClass = EnterZipCodePageBase.class)
 public class EnterZipCodePage extends EnterZipCodePageBase {
@@ -23,9 +25,8 @@ public class EnterZipCodePage extends EnterZipCodePageBase {
 
     @Override
     public void enterZipCode() {
-        if (enterZipCodeField.isElementPresent(5L)) {
-            enterZipCodeField.type(R.TESTDATA.get("zipCode"));
-        }
+        waitUntil(ExpectedConditions.visibilityOfElementLocated(By.id("GLUXZipUpdateInput")), 5L);
+        enterZipCodeField.type(R.TESTDATA.get("zipCode"));
     }
 
     @Override
