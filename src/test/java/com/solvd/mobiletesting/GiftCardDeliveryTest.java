@@ -1,11 +1,13 @@
 package com.solvd.mobiletesting;
 
 import com.qaprosoft.carina.core.foundation.IAbstractTest;
+import com.solvd.mobiletesting.android.ChromeApp;
 import com.solvd.mobiletesting.android.page.HomePage;
 import com.solvd.mobiletesting.base.element.LocationPopUpBase;
 import com.solvd.mobiletesting.base.element.MenuBarBase;
 import com.solvd.mobiletesting.base.element.TopDropMenuBase;
 import com.solvd.mobiletesting.base.page.*;
+import com.solvd.mobiletesting.base.utils.*;
 import com.zebrunner.carina.utils.R;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -17,7 +19,7 @@ public class GiftCardDeliveryTest implements IAbstractTest {
 
     @Test(testName = "verify that delivery is impossible to Belarus")
     public void verifyDeliveryImpossibleLocationMessageTest() {
-        HomePageBase homePage = new HomePage(getDriver());
+        HomePageBase homePage = initPage(getDriver(), HomePageBase.class);
         homePage.open();
         LocationPopUpBase locationPopUp = homePage.getLocationPopUp();
         locationPopUp.clickNotChangeButton();
@@ -26,6 +28,12 @@ public class GiftCardDeliveryTest implements IAbstractTest {
         MenuBarBase menuBar = homePage.getMenuBar();
         GiftCardPageBase giftCardPage = menuBar.clickGiftCardTabButtonIfPresent();
         giftCardPage.clickOccasionButton();
+        MobileContextUtils contextHelper = new MobileContextUtils();
+        contextHelper.switchMobileContext(MobileContextUtils.View.NATIVE);
+        ChromeApp chromeApp = new ChromeApp(getDriver());
+        chromeApp.clickSwitchTabButton();
+        chromeApp.createNewTab();
+        contextHelper.switchMobileContext(MobileContextUtils.View.WEB);
         ResultPageBase resultPage = giftCardPage.clickTypeOfCard("MAIL");
         List<String> messages = resultPage.getValidationMessages();
 
@@ -36,12 +44,19 @@ public class GiftCardDeliveryTest implements IAbstractTest {
 
     @Test(testName = "verify that click Add to cart is impossible from Belarus")
     public void verifyImpossibleClickAddToCartButton() {
-        HomePageBase homePage = new HomePage(getDriver());
+        HomePageBase homePage = initPage(getDriver(), HomePageBase.class);
         homePage.open();
         LocationPopUpBase locationPopUp = homePage.getLocationPopUp();
         locationPopUp.clickNotChangeButton();
         String actualLocation = homePage.getActualDeliveryLocation();
         Assert.assertEquals(actualLocation, R.TESTDATA.get("impossibleDelivery"), "The location is not " + R.TESTDATA.get("impossibleDelivery"));
+        MobileContextUtils contextHelper = new MobileContextUtils();
+        contextHelper.switchMobileContext(MobileContextUtils.View.NATIVE);
+        ChromeApp chromeApp = new ChromeApp(getDriver());
+        chromeApp.createNewBookmarkButton("https://www.abw.by/");
+        chromeApp.clickSwitchTabButton();
+        chromeApp.clickCloseTab();
+        contextHelper.switchMobileContext(MobileContextUtils.View.WEB);
         MenuBarBase menuBar = homePage.getMenuBar();
         GiftCardPageBase giftCardPage = menuBar.clickGiftCardTabButtonIfPresent();
         giftCardPage.clickOccasionButton();
