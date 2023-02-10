@@ -5,35 +5,19 @@
 
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.solvd</groupId>
-	<artifactId>android-testing</artifactId>
+	<artifactId>mobile-testing</artifactId>
 	<version>1.0</version>
 	<packaging>jar</packaging>
-	<name>andoid testing for amazon</name>
-	<url>git@github.com:olpapina/android-testing.git</url>
+	<name>android testing for amazon</name>
+	<url>git@github.com:olpapina/mobile-testing.git</url>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<carina-core_version>8.0.4</carina-core_version>
 		<carina-aws-s3.version>1.0.0</carina-aws-s3.version>
 		<java.version>11</java.version>
-		<zebrunner-agent.version>1.9.2</zebrunner-agent.version>
 		<suite>helloWorld</suite>
 	</properties>
-
-	<repositories>
-		<!-- Uncomment only for testing any SNAPSHOT version of carina or zebrunner agent! -->
-		<!--repository>
-			<id>zebrunner_snapshots</id>
-			<name>zebrunner Snapshots</name>
-			<url>https://nexus.zebrunner.dev/repository/ce-snapshots/</url>
-			<releases>
-				<enabled>false</enabled>
-			</releases>
-			<snapshots>
-				<enabled>true</enabled>
-			</snapshots>
-		</repository-->
-	</repositories>
 
 	<dependencies>
 		<dependency>
@@ -61,14 +45,6 @@
 			<groupId>org.apache.logging.log4j</groupId>
 			<artifactId>log4j-core</artifactId>
 			<version>2.17.1</version>
-		</dependency>
-
-		<dependency>
-			<!--we need it to reuse benefits of zebrunner testng agent for webdriver
-				sesssion(s) declaration -->
-			<groupId>net.bytebuddy</groupId>
-			<artifactId>byte-buddy</artifactId>
-			<version>1.12.10</version>
 		</dependency>
 		<dependency>
 			<groupId>org.mybatis</groupId>
@@ -108,24 +84,12 @@
 						</goals>
 					</execution>
 				</executions>
-				<configuration>
-					<artifactItems>
-						<artifactItem>
-							<groupId>com.zebrunner</groupId>
-							<artifactId>agent-core</artifactId>
-							<version>${zebrunner-agent.version}</version>
-							<outputDirectory>${project.build.directory}/agent</outputDirectory>
-							<destFileName>zebrunner-agent.jar</destFileName>
-						</artifactItem>
-					</artifactItems>
-				</configuration>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
 				<version>3.0.0-M6</version>
 				<configuration>
-					<argLine>-javaagent:${project.build.directory}/agent/zebrunner-agent.jar</argLine>
 					<useSystemClassLoader>false</useSystemClassLoader>
 					<suiteXmlFiles>
 						<suiteXmlFile>${project.build.directory}/test-classes/testng_suites/${suite}.xml</suiteXmlFile>
