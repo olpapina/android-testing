@@ -2,7 +2,6 @@ package com.solvd.mobiletesting.android.page;
 
 import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
 import com.solvd.mobiletesting.base.page.GiftCardPageBase;
-import com.solvd.mobiletesting.base.page.ResultPageBase;
 import com.solvd.mobiletesting.base.page.ResultSearchPageBase;
 import com.zebrunner.carina.utils.factory.DeviceType;
 import org.openqa.selenium.WebDriver;

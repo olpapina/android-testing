@@ -67,7 +67,4 @@ public class ChromeApp extends AppBase {
         tap(toolbarMenuButtons.get(1));
     }
 
-    public List<ExtendedWebElement> getTabActionButtons() {
-        return tabActionButtons;
-    }
 }

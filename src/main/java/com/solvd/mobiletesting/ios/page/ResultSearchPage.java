@@ -1,16 +1,12 @@
 package com.solvd.mobiletesting.ios.page;
 
 import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
-import com.solvd.mobiletesting.base.AppBase;
 import com.solvd.mobiletesting.base.page.ResultPageBase;
 import com.solvd.mobiletesting.base.page.ResultSearchPageBase;
-import com.solvd.mobiletesting.base.utils.MobileContextUtils;
 import com.zebrunner.carina.utils.factory.DeviceType;
 import com.zebrunner.carina.utils.mobile.IMobileUtils;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 
 @DeviceType(pageType = DeviceType.Type.IOS_PHONE, parentClass = ResultSearchPageBase.class)
 public class ResultSearchPage extends ResultSearchPageBase implements IMobileUtils {
