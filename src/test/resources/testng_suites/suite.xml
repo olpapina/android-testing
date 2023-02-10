@@ -4,7 +4,7 @@
 <suite name = "Verify amazon.com" parallel="tests" thread-count="2">
 
     <test name = "ChromeTest - GiftCard section test" parallel="methods" thread-count="1">
-        <parameter name="browser" value="chrome"/>
+        <parameter name="browser" value="safari"/>
         <classes>
             <class name = "com.solvd.mobiletesting.GiftCardDeliveryTest" />
         </classes>

@@ -9,7 +9,6 @@ public abstract class GiftCardPageBase extends AbstractPage {
         super(driver);
     }
 
-    public abstract void clickOccasionButton();
+    public abstract ResultSearchPageBase clickOccasionButton();
 
-    public abstract ResultPageBase clickTypeOfCard(String type);
 }

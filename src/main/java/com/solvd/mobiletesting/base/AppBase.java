@@ -4,8 +4,8 @@ import com.qaprosoft.carina.core.gui.AbstractPage;
 import com.zebrunner.carina.utils.mobile.IMobileUtils;
 import org.openqa.selenium.WebDriver;
 
-public abstract class ChromeAppBase extends AbstractPage implements IMobileUtils {
-    public ChromeAppBase(WebDriver driver) {
+public abstract class AppBase extends AbstractPage implements IMobileUtils {
+    public AppBase(WebDriver driver) {
         super(driver);
     }
 
@@ -16,4 +16,8 @@ public abstract class ChromeAppBase extends AbstractPage implements IMobileUtils
     public abstract void clickCloseTab();
 
     public abstract void createNewTab();
+
+    public void clickOpenButton() {
+        //this method use only for safari application
+    }
 }

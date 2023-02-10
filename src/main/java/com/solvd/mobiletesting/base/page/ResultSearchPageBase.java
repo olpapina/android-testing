@@ -9,4 +9,6 @@ public abstract class ResultSearchPageBase extends AbstractPage {
     }
 
     public abstract ResultPageBase clickFilterOfCard(String type);
+
+    public abstract ResultPageBase clickTypeOfCard(String type);
 }

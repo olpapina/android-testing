@@ -1,4 +1,4 @@
-package com.solvd.mobiletesting.android.page;
+package com.solvd.mobiletesting.ios.page;
 
 import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
 import com.solvd.mobiletesting.base.element.LocationPopUpBase;
@@ -12,7 +12,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
-@DeviceType(pageType = DeviceType.Type.ANDROID_PHONE, parentClass = HomePageBase.class)
+@DeviceType(pageType = DeviceType.Type.IOS_PHONE, parentClass = HomePageBase.class)
 public class HomePage extends HomePageBase {
 
     @FindBy(xpath = "//*[@id='glow-ingress-single-line']")
@@ -20,6 +20,8 @@ public class HomePage extends HomePageBase {
 
     @FindBy(xpath = "//*[@id='nav-hamburger-menu']")
     private ExtendedWebElement topMenuButton;
+    @FindBy(id = "nav-subnav-toaster")
+    private ExtendedWebElement locationPopUp;
 
     public HomePage(WebDriver driver) {
         super(driver);
@@ -27,7 +29,9 @@ public class HomePage extends HomePageBase {
 
     @Override
     public LocationPopUpBase getLocationPopUp() {
-        return initPage(getDriver(), LocationPopUpBase.class);
+        if (locationPopUp.isElementPresent()) {
+            return initPage(getDriver(), LocationPopUpBase.class);
+        } else return null;
     }
 
     @Override

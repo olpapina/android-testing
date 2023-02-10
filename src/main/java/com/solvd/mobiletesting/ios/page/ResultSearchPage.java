@@ -1,14 +1,18 @@
-package com.solvd.mobiletesting.android.page;
+package com.solvd.mobiletesting.ios.page;
 
 import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
+import com.solvd.mobiletesting.base.AppBase;
 import com.solvd.mobiletesting.base.page.ResultPageBase;
 import com.solvd.mobiletesting.base.page.ResultSearchPageBase;
+import com.solvd.mobiletesting.base.utils.MobileContextUtils;
 import com.zebrunner.carina.utils.factory.DeviceType;
 import com.zebrunner.carina.utils.mobile.IMobileUtils;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
-@DeviceType(pageType = DeviceType.Type.ANDROID_PHONE, parentClass = ResultSearchPageBase.class)
+@DeviceType(pageType = DeviceType.Type.IOS_PHONE, parentClass = ResultSearchPageBase.class)
 public class ResultSearchPage extends ResultSearchPageBase implements IMobileUtils {
 
     @FindBy(xpath = "//*[@id='question-answer-1-expander-button-Physical Gift Card']")
@@ -41,31 +45,31 @@ public class ResultSearchPage extends ResultSearchPageBase implements IMobileUti
     public ResultPageBase clickFilterOfCard(String type) {
         switch (type) {
             case "Mail":
-                mailFilterButton.scrollTo();
-                mailFilterButton.click();
+                tap(mailButton);
                 break;
             case "eGIFT":
-                eGiftCardFilterButton.scrollTo();
-                eGiftCardFilterButton.click();
+                eGiftCardButton.scrollTo();
+                eGiftCardButton.click(5L);
                 break;
             default:
-                amazonButton.click();
+                amazonButton.click(5L);
                 break;
         }
         return initPage(getDriver(), ResultPageBase.class);
     }
 
+
     @Override
     public ResultPageBase clickTypeOfCard(String type) {
         switch (type) {
             case "MAIL":
-                mailButton.click();
+                tap(mailButton);
                 break;
             case "EGIFT":
-                eGiftCardButton.click();
+                tap(eGiftCardButton);
                 break;
             default:
-                eGiftCardButton.clickIfPresent();
+                mailButton.clickIfPresent();
                 break;
         }
         return initPage(getDriver(), ResultPageBase.class);
