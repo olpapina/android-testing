@@ -1,33 +1,26 @@
 <?xml version = "1.0" encoding = "UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
-<suite name = "Verify amazon.com" parallel="tests" thread-count="2">
-    <parameter name="suiteOwner" value="qpsdemo" />
+<suite name = "Verify amazon.com" parallel="tests" thread-count="4">
+
+    <parameter name="suiteOwner" value="qpsdemo"/>
     <parameter name="provider" value="mcloud"/>
-    <parameter name="jenkinsJobName" value="Mobile-Android-Demo-Test" />
+    <parameter name="jenkinsJobName" value="Mobile-Android-Demo-Test"/>
     <parameter name="jenkinsJobType" value="android"/>
-    <parameter name="jenkinsEmail" value="demo@qaprosoft.com" />
-    <parameter name="jenkinsEnvironments" value="DEMO" />
+    <parameter name="jenkinsEmail" value="demo@qaprosoft.com"/>
+    <parameter name="jenkinsEnvironments" value="DEMO"/>
 
-    <parameter name="jenkinsMobileDefaultPool" value="ANY" />
+    <parameter name="jenkinsMobileDefaultPool" value="ANY"/>
 
-    <parameter name="jenkinsRegressionPipeline" value="mobile_regression" />
-    <parameter name="jenkinsJobExecutionOrder" value="3" />
-    <parameter name="jenkinsJobExecutionMode" value="continue" />
-    <parameter name="jenkinsAutoScreenshot" value="true" />
+    <parameter name="jenkinsRegressionPipeline" value="mobile_regression"/>
+    <parameter name="jenkinsJobExecutionOrder" value="3"/>
+    <parameter name="jenkinsJobExecutionMode" value="continue"/>
+    <parameter name="jenkinsAutoScreenshot" value="true"/>
 
-    <test name = "ChromeTest - GiftCard section test" parallel="methods" thread-count="1">
-        <parameter name="browser" value="chrome"/>
+    <test name = "ChromeTest - GiftCard section test">
         <classes>
             <class name = "com.solvd.mobiletesting.GiftCardDeliveryTest" />
         </classes>
     </test>
-
-<!--    <test name = "FirefoxTest - GiftCard section test" parallel="methods" thread-count="1">-->
-<!--        <parameter name="browser" value="firefox"/>-->
-<!--        <classes>-->
-<!--            <class name = "com.solvd.mobiletestingGiftCardDeliveryTest" />-->
-<!--        </classes>-->
-<!--    </test>-->
 
 </suite>
