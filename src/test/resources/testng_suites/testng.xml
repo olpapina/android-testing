@@ -17,7 +17,7 @@
     <parameter name="jenkinsJobExecutionMode" value="continue"/>
     <parameter name="jenkinsAutoScreenshot" value="true"/>
 
-    <test name = "ChromeTest - GiftCard section test">
+    <test name = "ChromeTest - GiftCard section test" parallel="methods" thread-count="5">
         <classes>
             <class name = "com.solvd.mobiletesting.GiftCardDeliveryTest" />
         </classes>
