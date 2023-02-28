@@ -54,8 +54,8 @@ public class SafariApp extends AppBase {
 
     @Override
     public void createNewBookmarkButton(String urlNewSite) {
-        tabOverViewButton.click();
-        newTabButton.click();
+        clickSwitchTabButton();
+        createNewTab();
         searchField.type(urlNewSite);
         tap(goButton);
         tap(shareButton);
