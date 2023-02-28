@@ -1,13 +1,15 @@
 package com.solvd.mobiletesting.android;
 
 import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
-import com.solvd.mobiletesting.base.ChromeAppBase;
+import com.solvd.mobiletesting.base.AppBase;
+import com.zebrunner.carina.utils.factory.DeviceType;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
 
-public class ChromeApp extends ChromeAppBase {
+@DeviceType(pageType = DeviceType.Type.ANDROID_PHONE, parentClass = AppBase.class)
+public class ChromeApp extends AppBase {
 
     @FindBy(id = "toolbar_buttons")
     private ExtendedWebElement toolbarButton;
@@ -65,7 +67,4 @@ public class ChromeApp extends ChromeAppBase {
         tap(toolbarMenuButtons.get(1));
     }
 
-    public List<ExtendedWebElement> getTabActionButtons() {
-        return tabActionButtons;
-    }
 }

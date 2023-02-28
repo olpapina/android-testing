@@ -22,4 +22,6 @@ public abstract class HomePageBase extends AbstractPage {
     public abstract SearchBoxBase getSearchBox();
 
     public abstract TopDropMenuBase clickTopMenu();
+
+    public abstract SelectLocationPageBase clickActualDeliveryLocation();
 }

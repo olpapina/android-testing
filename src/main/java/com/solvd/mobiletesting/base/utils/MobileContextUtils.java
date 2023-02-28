@@ -49,7 +49,12 @@ public class MobileContextUtils implements IDriverPool {
 
     public enum View {
         NATIVE("NATIVE_APP"),
-        WEB("CHROMIUM");
+
+        WEB("CHROMIUM"),
+
+        WEB1("WEBVIEW_"),
+
+        WEB2("WEBVIEW_");
 
         String viewName;
 
