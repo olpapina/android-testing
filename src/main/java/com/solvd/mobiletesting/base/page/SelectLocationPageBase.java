@@ -9,4 +9,6 @@ public abstract class SelectLocationPageBase extends AbstractPage {
     }
 
     public abstract EnterZipCodePageBase clickEnterZipCodeButton();
+
+    public abstract HomePageBase selectCountry();
 }

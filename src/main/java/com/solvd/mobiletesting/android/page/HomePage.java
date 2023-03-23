@@ -6,6 +6,7 @@ import com.solvd.mobiletesting.base.element.MenuBarBase;
 import com.solvd.mobiletesting.base.element.SearchBoxBase;
 import com.solvd.mobiletesting.base.element.TopDropMenuBase;
 import com.solvd.mobiletesting.base.page.HomePageBase;
+import com.solvd.mobiletesting.base.page.SelectLocationPageBase;
 import com.zebrunner.carina.utils.factory.DeviceType;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
@@ -53,5 +54,11 @@ public class HomePage extends HomePageBase {
     public TopDropMenuBase clickTopMenu() {
         topMenuButton.click(5L);
         return initPage(getDriver(), TopDropMenuBase.class);
+    }
+
+    @Override
+    public SelectLocationPageBase clickActualLocation() {
+        deliveryLocationIcon.click();
+        return initPage(getDriver(), SelectLocationPageBase.class);
     }
 }

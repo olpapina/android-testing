@@ -2,6 +2,7 @@ package com.solvd.mobiletesting.android.page;
 
 import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
 import com.solvd.mobiletesting.base.page.EnterZipCodePageBase;
+import com.solvd.mobiletesting.base.page.HomePageBase;
 import com.solvd.mobiletesting.base.page.SelectLocationPageBase;
 import com.zebrunner.carina.utils.factory.DeviceType;
 import com.zebrunner.carina.utils.mobile.IMobileUtils;
@@ -14,6 +15,12 @@ public class SelectLocationPage extends SelectLocationPageBase implements IMobil
     @FindBy(xpath = "//*[@id='GLUXMobilePostalCodeLink']")
     private ExtendedWebElement enterZipCodeButton;
 
+    @FindBy(xpath = "//*[@id='GLUXMobileCountryLink']")
+    private ExtendedWebElement outsideUSButton;
+
+    @FindBy(xpath = "//*[@class='a-box-inner']//*[contains(text(),'Belarus')]")
+    private ExtendedWebElement selectBelarus;
+
     public SelectLocationPage(WebDriver driver) {
         super(driver);
     }
@@ -24,5 +31,15 @@ public class SelectLocationPage extends SelectLocationPageBase implements IMobil
             tap(enterZipCodeButton);
         }
         return initPage(getDriver(), EnterZipCodePageBase.class);
+    }
+
+    @Override
+    public HomePageBase selectCountry() {
+        if (outsideUSButton.isElementPresent() & outsideUSButton.isClickable()) {
+            swipe(outsideUSButton);
+            tap(outsideUSButton);
+        }
+        selectBelarus.clickIfPresent(5L);
+        return initPage(getDriver(), HomePageBase.class);
     }
 }

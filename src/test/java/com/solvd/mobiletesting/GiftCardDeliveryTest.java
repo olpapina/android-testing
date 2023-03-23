@@ -22,9 +22,16 @@ public class GiftCardDeliveryTest implements IAbstractTest {
         HomePageBase homePage = initPage(getDriver(), HomePageBase.class);
         homePage.open();
         LocationPopUpBase locationPopUp = homePage.getLocationPopUp();
-        locationPopUp.clickNotChangeButton();
+        if (locationPopUp != null) {
+            locationPopUp.clickNotChangeButton();
+        }
         String actualLocation = homePage.getActualDeliveryLocation();
+        Assert.assertEquals(actualLocation, R.TESTDATA.get("actualDelivery"), "The location is not " + R.TESTDATA.get("actualDelivery"));
+        SelectLocationPageBase selectLocationPage = homePage.clickActualLocation();
+        homePage = selectLocationPage.selectCountry();
+        actualLocation = homePage.getActualDeliveryLocation();
         Assert.assertEquals(actualLocation, R.TESTDATA.get("impossibleDelivery"), "The location is not " + R.TESTDATA.get("impossibleDelivery"));
+
         MenuBarBase menuBar = homePage.getMenuBar();
         GiftCardPageBase giftCardPage = menuBar.clickGiftCardTabButton();
         giftCardPage.clickOccasionButton();
@@ -47,9 +54,15 @@ public class GiftCardDeliveryTest implements IAbstractTest {
         HomePageBase homePage = initPage(getDriver(), HomePageBase.class);
         homePage.open();
         LocationPopUpBase locationPopUp = homePage.getLocationPopUp();
-        locationPopUp.clickNotChangeButton();
+        if (locationPopUp != null) {
+            locationPopUp.clickNotChangeButton();
+        }
         String actualLocation = homePage.getActualDeliveryLocation();
-        Assert.assertEquals(actualLocation, R.TESTDATA.get("impossibleDelivery"), "The location is not " + R.TESTDATA.get("impossibleDelivery"));
+        Assert.assertEquals(actualLocation, R.TESTDATA.get("actualDelivery"), "The location is not " + R.TESTDATA.get("actualDelivery"));
+        SelectLocationPageBase selectLocationPage = homePage.clickActualLocation();
+        homePage = selectLocationPage.selectCountry();
+        String actualLocationAfter = homePage.getActualDeliveryLocation();
+        Assert.assertEquals(actualLocationAfter, R.TESTDATA.get("impossibleDelivery"), "The location is not " + R.TESTDATA.get("impossibleDelivery"));
         MobileContextUtils contextHelper = new MobileContextUtils();
         contextHelper.switchMobileContext(MobileContextUtils.View.NATIVE);
         ChromeApp chromeApp = new ChromeApp(getDriver());
@@ -73,7 +86,12 @@ public class GiftCardDeliveryTest implements IAbstractTest {
         HomePageBase homePage = new HomePage(getDriver());
         homePage.open();
         LocationPopUpBase locationPopUp = homePage.getLocationPopUp();
-        SelectLocationPageBase selectLocationPage = locationPopUp.clickChangeAddressButton();
+        SelectLocationPageBase selectLocationPage;
+        if (locationPopUp != null) {
+            selectLocationPage = locationPopUp.clickChangeAddressButton();
+        } else {
+            selectLocationPage = homePage.clickActualLocation();
+        }
         EnterZipCodePageBase enterZipCodePage = selectLocationPage.clickEnterZipCodeButton();
         enterZipCodePage.enterZipCode();
         homePage = enterZipCodePage.clickApplyButton();
@@ -95,10 +113,15 @@ public class GiftCardDeliveryTest implements IAbstractTest {
     @Test(testName = "verify eGiftCard type delivery is email")
     public void verifyDeliveryTypeEGiftCardTest() {
         HomePageBase homePage = new HomePage(getDriver());
-        homePage.open();
-        LocationPopUpBase locationPopUp = homePage.getLocationPopUp();
-        locationPopUp.clickNotChangeButton();
+        homePage.open();LocationPopUpBase locationPopUp = homePage.getLocationPopUp();
+        if (locationPopUp != null) {
+            locationPopUp.clickNotChangeButton();
+        }
         String actualLocation = homePage.getActualDeliveryLocation();
+        Assert.assertEquals(actualLocation, R.TESTDATA.get("actualDelivery"), "The location is not " + R.TESTDATA.get("actualDelivery"));
+        SelectLocationPageBase selectLocationPage = homePage.clickActualLocation();
+        homePage = selectLocationPage.selectCountry();
+        actualLocation = homePage.getActualDeliveryLocation();
         Assert.assertEquals(actualLocation, R.TESTDATA.get("impossibleDelivery"), "The location is not " + R.TESTDATA.get("impossibleDelivery"));
         MenuBarBase menuBar = homePage.getMenuBar();
         GiftCardPageBase giftCardPage = menuBar.clickGiftCardTabButton();
@@ -116,7 +139,12 @@ public class GiftCardDeliveryTest implements IAbstractTest {
         HomePageBase homePage = new HomePage(getDriver());
         homePage.open();
         LocationPopUpBase locationPopUp = homePage.getLocationPopUp();
-        SelectLocationPageBase selectLocationPage = locationPopUp.clickChangeAddressButton();
+        SelectLocationPageBase selectLocationPage;
+        if (locationPopUp != null) {
+            selectLocationPage = locationPopUp.clickChangeAddressButton();
+        } else {
+            selectLocationPage = homePage.clickActualLocation();
+        }
         EnterZipCodePageBase enterZipCodePage = selectLocationPage.clickEnterZipCodeButton();
         enterZipCodePage.enterZipCode();
         enterZipCodePage.clickApplyButton();
