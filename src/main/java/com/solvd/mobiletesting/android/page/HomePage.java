@@ -16,6 +16,9 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 public class HomePage extends HomePageBase {
 
     @FindBy(xpath = "//*[@id='glow-ingress-single-line']")
+    private ExtendedWebElement deliveryLocationText;
+
+    @FindBy(xpath = "//*[@id='glow-ingress-block']")
     private ExtendedWebElement deliveryLocationIcon;
 
     @FindBy(xpath = "//*[@id='nav-hamburger-menu']")
@@ -39,8 +42,8 @@ public class HomePage extends HomePageBase {
     public String getActualDeliveryLocation() {
         waitUntil(ExpectedConditions.visibilityOfAllElements(), 10L);
         String location = "";
-        if (deliveryLocationIcon.isElementPresent(5L)) {
-            location = deliveryLocationIcon.getText();
+        if (deliveryLocationText.isElementPresent(5L)) {
+            location = deliveryLocationText.getText();
         }
         return location;
     }
