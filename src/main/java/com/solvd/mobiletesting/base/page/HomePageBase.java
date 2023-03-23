@@ -5,9 +5,10 @@ import com.solvd.mobiletesting.base.element.LocationPopUpBase;
 import com.solvd.mobiletesting.base.element.MenuBarBase;
 import com.solvd.mobiletesting.base.element.SearchBoxBase;
 import com.solvd.mobiletesting.base.element.TopDropMenuBase;
+import com.zebrunner.carina.utils.mobile.IMobileUtils;
 import org.openqa.selenium.WebDriver;
 
-public abstract class HomePageBase extends AbstractPage {
+public abstract class HomePageBase extends AbstractPage implements IMobileUtils {
 
     public HomePageBase(WebDriver driver) {
         super(driver);

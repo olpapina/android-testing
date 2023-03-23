@@ -61,7 +61,7 @@ public class HomePage extends HomePageBase {
 
     @Override
     public SelectLocationPageBase clickActualLocation() {
-        deliveryLocationIcon.click();
+        tap(deliveryLocationIcon);
         return initPage(getDriver(), SelectLocationPageBase.class);
     }
 }
