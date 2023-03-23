@@ -28,6 +28,7 @@ public class SelectLocationPage extends SelectLocationPageBase implements IMobil
     @Override
     public EnterZipCodePageBase clickEnterZipCodeButton() {
         if (enterZipCodeButton.isElementPresent() & enterZipCodeButton.isClickable()) {
+            swipe(enterZipCodeButton);
             tap(enterZipCodeButton);
         }
         return initPage(getDriver(), EnterZipCodePageBase.class);
